@@ -1,6 +1,3 @@
-$white: #ffffff;
-$black: #050505;
-
 $primary-400: #8752e1;
 $primary-500: #6927da;
 $primary-600: #5a1ec9;
@@ -22,6 +19,9 @@ $color-text-muted: $neutral-600;
 $color-background: $neutral-200;
 $color-surface: $neutral-0;
 $color-surface-muted: $neutral-100;
+$color-shell-start: #ECF6CE;
+$color-shell-mid: #D7E1B8;
+$color-shell-end: #E8F2CB;
 $color-border: $neutral-400;
 $color-border-subtle: $neutral-300;
 
@@ -36,6 +36,7 @@ $font-family-mono: var(--font-geist-mono, "SFMono-Regular"), "SFMono-Regular", M
 
 $font-weight-regular: 400;
 $font-weight-medium: 500;
+$font-size-sm: 0.875rem;
 $font-size-body: 1rem;
 $font-size-section-title: 1.125rem;
 $font-size-page-title: 1.75rem;
@@ -72,9 +73,35 @@ $type-styles: (
 
 $shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.08);
 $shadow-md: 0 10px 30px rgba(15, 23, 42, 0.06);
+$shadow-shell-inset: inset 0 0 4px rgba(194, 213, 139, 0.34);
+$shadow-pill: 0 2px 4px rgba(182, 180, 185, 0.16);
+$shadow-dropdown: 0 2px 4px rgba(182, 180, 185, 0.16), inset 0 0 4px #e1d4f8;
 
 $radius-sm: 0.625rem;
 $radius-md: 0.75rem;
 $radius-lg: 1.25rem;
 $radius-xl: 1.5rem;
+$radius-shell: 1.25rem;
+
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+
+$desktop-shell-width: 70.125rem;
+$desktop-shell-min-height: 99rem;
+$desktop-shell-padding: $space-2;
+$desktop-shell-gap: $space-2;
+
+$brand-logo-width: 7.875rem;
+$brand-logo-height: 1.5rem;
+
+$header-control-height: 2.25rem;
+$header-control-radius: $radius-md;
+$header-control-gap: $space-1;
+$header-control-padding-block: $space-1;
+$header-control-padding-inline: $space-3;
+$header-control-width: 10.75rem;
+$header-control-width-compact: 4.75rem;
+$header-control-chevron-size: 0.75rem;
 $transition-base: 180ms ease;

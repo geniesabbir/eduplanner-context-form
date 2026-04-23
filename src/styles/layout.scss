@@ -1,4 +1,185 @@
+@use "./variables" as *;
+
 .app-shell,
 .app-shell__body {
   min-height: 100vh;
+}
+
+.desktop-stage {
+  width: min(100% - 1rem, #{$desktop-shell-width});
+  margin-inline: auto;
+  padding-block: 0.5rem;
+}
+
+.desktop-shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: $desktop-shell-gap;
+  min-height: $desktop-shell-min-height;
+  padding: $desktop-shell-padding;
+  border-radius: $radius-shell;
+  background: linear-gradient(
+    90deg,
+    $color-shell-start 0%,
+    $color-shell-mid 48%,
+    $color-shell-end 100%
+  );
+  box-shadow: $shadow-shell-inset;
+}
+
+.desktop-shell__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $desktop-shell-gap;
+  min-height: $header-control-height;
+  padding-inline: $space-2;
+  padding-top: $space-2;
+}
+
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.brand-lockup__logo {
+  display: block;
+  width: $brand-logo-width;
+  height: $brand-logo-height;
+}
+
+.desktop-shell__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: $desktop-shell-gap;
+}
+
+.header-dropdown {
+  position: relative;
+}
+
+.header-dropdown__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $header-control-gap;
+  width: $header-control-width;
+  height: $header-control-height;
+  padding: $header-control-padding-block $header-control-padding-inline;
+  border: 1px solid rgba($color-border-subtle, 0.92);
+  border-radius: $header-control-radius;
+  background: $color-surface;
+  box-shadow: $shadow-dropdown;
+  color: $color-text;
+  font-family: $font-family-sans;
+  font-size: 1rem;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  transition:
+    border-color $transition-base,
+    box-shadow $transition-base,
+    transform $transition-base;
+}
+
+.header-dropdown__trigger:hover {
+  border-color: rgba($primary-400, 0.45);
+}
+
+.header-dropdown.is-open .header-dropdown__trigger {
+  border-color: rgba($primary-400, 0.45);
+  box-shadow: $shadow-dropdown, 0 0 0 3px rgba($primary-400, 0.08);
+}
+
+.header-dropdown--compact .header-dropdown__trigger {
+  width: $header-control-width-compact;
+}
+
+.header-dropdown__icon {
+  flex: 0 0 auto;
+}
+
+.header-dropdown__value {
+  color: $color-text;
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.header-dropdown__chevron {
+  position: relative;
+  flex: 0 0 auto;
+  width: $header-control-chevron-size;
+  height: $header-control-chevron-size;
+  opacity: 0.8;
+  color: transparent;
+  font-size: 0;
+}
+
+.header-dropdown__chevron::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-right: 1.5px solid $color-text-muted;
+  border-bottom: 1.5px solid $color-text-muted;
+  transform: rotate(45deg) translateY(-12%);
+}
+
+.header-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 0.625rem);
+  right: 0;
+  z-index: 10;
+  display: grid;
+  min-width: 100%;
+  padding: 0.5rem;
+  border: 1px solid rgba($color-border-subtle, 0.92);
+  border-radius: $radius-md;
+  background: $color-surface;
+  box-shadow: $shadow-md;
+}
+
+.header-dropdown--compact .header-dropdown__menu {
+  min-width: $header-control-width-compact;
+}
+
+.header-dropdown__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background: transparent;
+  color: $color-text;
+  font-family: $font-family-sans;
+  font-size: 0.9375rem;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  text-align: left;
+}
+
+.header-dropdown__option:hover {
+  background: $color-surface-muted;
+}
+
+.header-dropdown__option.is-selected {
+  color: $color-text-strong;
+  background: rgba($primary-400, 0.08);
+}
+
+.header-dropdown__check {
+  color: $color-primary;
+  font-size: 0.875rem;
+}
+
+.desktop-shell__panel {
+  min-height: 0;
+  border-radius: $radius-shell;
+  background: $color-surface;
 }

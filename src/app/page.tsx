@@ -4,6 +4,7 @@ import {
   HeaderDropdown,
   type HeaderDropdownItem,
 } from "../components/ui/HeaderDropdown";
+import { ProvideContextForm } from "../components/ui/ProvideContextForm";
 import { StepTabs, type StepTabItem } from "../components/ui/StepTabs";
 
 const savedAnswerItems: HeaderDropdownItem[] = [
@@ -97,6 +98,7 @@ export default function Home() {
               currentStep={1}
               totalSteps={4}
             />
+            <ProvideContextForm />
           </div>
         </div>
       </section>

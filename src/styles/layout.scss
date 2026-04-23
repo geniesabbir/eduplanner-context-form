@@ -445,3 +445,357 @@
   background: $content-progress-active-color;
   box-shadow: $content-progress-segment-shadow;
 }
+
+.context-form {
+  display: grid;
+  gap: $form-actions-offset-top;
+  width: $form-card-width;
+  padding-bottom: $form-actions-offset-bottom;
+}
+
+.context-form__card {
+  display: grid;
+  gap: $form-card-gap;
+  width: $form-card-width;
+  padding: $form-card-padding;
+  border-radius: $form-card-radius;
+  background: $form-card-background;
+  box-shadow: $form-card-shadow;
+}
+
+.context-form__section {
+  display: grid;
+  gap: $form-section-gap;
+}
+
+.context-form__section-header,
+.context-form__section-body,
+.form-field {
+  display: grid;
+  gap: 0.375rem;
+  width: $form-content-width;
+}
+
+.context-form__section-title {
+  color: $color-text-strong;
+  font-family: $font-family-display;
+  font-size: $form-title-size;
+  font-weight: $font-weight-medium;
+  line-height: $form-title-line-height;
+  letter-spacing: $form-title-letter-spacing;
+}
+
+.context-form__section-description {
+  color: $form-description-color;
+  font-family: $font-family-display;
+  font-size: $form-description-size;
+  font-weight: $font-weight-regular;
+  line-height: $form-description-line-height;
+  letter-spacing: $form-description-letter-spacing;
+}
+
+.context-form__section-body {
+  gap: $form-section-stack-gap;
+}
+
+.context-form__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: $form-actions-gap;
+  width: $form-actions-width;
+}
+
+.form-field__label {
+  color: $color-text;
+  font-family: $font-family-display;
+  font-size: $form-label-size;
+  font-weight: $font-weight-medium;
+  line-height: $form-label-line-height;
+  letter-spacing: $form-label-letter-spacing;
+}
+
+.form-control {
+  width: 100%;
+  height: $form-control-height;
+  padding: $form-control-padding-block $form-control-padding-inline;
+  border: 1px solid $form-control-border;
+  border-radius: $form-control-radius;
+  background: $color-surface;
+  color: $color-text-strong;
+  font-family: $font-family-display;
+  font-size: $form-control-font-size;
+  font-weight: $font-weight-regular;
+  line-height: 1.4;
+  letter-spacing: 0;
+  box-shadow: $form-control-shadow;
+}
+
+.form-control--compact {
+  width: $form-slider-value-width;
+  height: $form-slider-input-height;
+  padding-inline: 0.625rem;
+  justify-self: end;
+  align-self: center;
+  color: $form-slider-value-text-color;
+  font-size: $form-slider-text-size;
+  font-weight: $font-weight-regular;
+  line-height: $form-slider-text-line-height;
+  letter-spacing: $form-slider-text-letter-spacing;
+  text-align: center;
+}
+
+.selection-grid {
+  display: grid;
+  grid-template-columns: repeat(6, $form-chip-width);
+  gap: $form-chip-gap;
+}
+
+.selection-grid--levels {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.selection-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+  width: $form-chip-width;
+  height: $form-chip-height;
+  padding: $form-chip-padding;
+  border: 1px solid $form-chip-border;
+  border-radius: $form-chip-radius;
+  background: $color-surface;
+  box-shadow: $form-chip-shadow;
+}
+
+.selection-chip.is-selected {
+  border-color: $form-chip-selected-border;
+  background: $form-chip-selected-bg;
+  box-shadow: $form-chip-selected-shadow;
+}
+
+.selection-chip--multi {
+  width: 100%;
+  border-color: $form-multi-chip-border;
+  box-shadow: $form-multi-chip-shadow;
+}
+
+.selection-chip__label {
+  color: $color-text;
+  font-family: $font-family-display;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.selection-chip__indicator,
+.selection-chip__checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: $primary-500;
+}
+
+.selection-chip__indicator {
+  width: $form-chip-indicator-size;
+  height: $form-chip-indicator-size;
+  border: 1px solid #d3d7dd;
+  border-radius: 50%;
+  background: $color-surface;
+}
+
+.selection-chip.is-selected .selection-chip__indicator {
+  border-color: $primary-500;
+}
+
+.selection-chip.is-selected .selection-chip__indicator::after {
+  content: "";
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: $primary-500;
+}
+
+.selection-chip__checkbox {
+  width: $form-chip-checkbox-size;
+  height: $form-chip-checkbox-size;
+  border: 1px solid #d3d7dd;
+  border-radius: 0.375rem;
+  background: $color-surface;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.selection-chip--multi.is-selected {
+  border-color: $form-multi-chip-selected-border;
+  background: $form-multi-chip-selected-bg;
+  box-shadow: $form-multi-chip-selected-shadow;
+}
+
+.selection-chip--multi.is-selected .selection-chip__checkbox {
+  border-color: $primary-400;
+}
+
+.slider-field {
+  display: grid;
+  grid-template-columns: $form-slider-visual-width $form-slider-value-width;
+  align-items: center;
+  gap: $form-slider-gap;
+  width: auto;
+}
+
+.slider-field__visual {
+  display: grid;
+  position: relative;
+  width: $form-slider-visual-width;
+  min-width: $form-slider-visual-width;
+  padding-top: calc(#{$form-slider-tooltip-height} + #{$form-slider-tooltip-gap});
+  gap: 0.75rem;
+}
+
+.slider-field__tooltip {
+  position: absolute;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $form-slider-tooltip-width;
+  height: $form-slider-tooltip-height;
+  border: 1px solid #d8d8d8;
+  border-radius: 0.75rem;
+  background: $color-surface;
+  color: $form-slider-tooltip-text-color;
+  font-family: $font-family-display;
+  font-size: $form-slider-text-size;
+  font-weight: $font-weight-regular;
+  line-height: $form-slider-text-line-height;
+  letter-spacing: $form-slider-text-letter-spacing;
+  transform: translateX(-50%);
+  box-shadow: $form-control-shadow;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.slider-field__track {
+  position: relative;
+  width: 100%;
+  height: $form-slider-track-height;
+  border-radius: 100px;
+  background: $form-slider-track-color;
+  overflow: hidden;
+}
+
+.slider-field__track-active {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: $form-slider-active-width;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    $form-slider-active-color-start 0%,
+    $form-slider-active-color-end 100%
+  );
+  box-shadow: $form-slider-active-shadow;
+}
+
+.slider-field__ticks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.slider-field__tick {
+  position: absolute;
+  top: 50%;
+  width: $form-slider-tick-width;
+  height: $form-slider-tick-height;
+  background: $form-slider-tick-color;
+  transform: translate(-50%, -50%);
+}
+
+.slider-field__range {
+  position: absolute;
+  inset: -0.5rem 0;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.slider-field__range::-webkit-slider-thumb {
+  width: 1px;
+  height: 1px;
+  appearance: none;
+}
+
+.slider-field__range::-moz-range-thumb {
+  width: 1px;
+  height: 1px;
+  border: 0;
+  background: transparent;
+}
+
+.slider-field__marks {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+}
+
+.slider-field__mark {
+  color: $color-text-muted;
+  font-family: $font-family-display;
+  font-size: $form-slider-mark-size;
+  font-weight: $font-weight-regular;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.slider-field__value {
+  align-self: end;
+}
+
+.context-form__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $form-action-width;
+  height: $form-action-height;
+  padding: $form-action-padding-block $form-action-padding-inline;
+  border-radius: $form-action-radius;
+  font-family: $font-family-display;
+  font-size: $form-action-text-size;
+  font-weight: $font-weight-medium;
+  line-height: $form-action-text-line-height;
+  letter-spacing: $form-action-text-letter-spacing;
+  text-align: center;
+  white-space: nowrap;
+  transition:
+    box-shadow $transition-base,
+    transform $transition-base,
+    border-color $transition-base;
+}
+
+.context-form__action:hover {
+  transform: translateY(-1px);
+}
+
+.context-form__action--secondary {
+  border: 1px solid $form-action-secondary-border;
+  background: $form-action-secondary-bg;
+  color: $form-action-text-color;
+  box-shadow: inset 0 0 6px rgba(225, 212, 248, 0.58);
+}
+
+.context-form__action--primary {
+  border: 1px solid transparent;
+  background: linear-gradient(
+    180deg,
+    $form-action-primary-bg-start 0%,
+    $form-action-primary-bg-end 100%
+  );
+  color: $form-action-primary-text-color;
+  box-shadow: $form-action-primary-shadow;
+}

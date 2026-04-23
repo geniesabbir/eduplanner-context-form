@@ -72,10 +72,6 @@
   background: $color-surface;
   box-shadow: $shadow-dropdown;
   color: $color-text;
-  font-family: $font-family-sans;
-  font-size: 1rem;
-  font-weight: $font-weight-medium;
-  line-height: 1;
   transition:
     border-color $transition-base,
     box-shadow $transition-base,
@@ -101,9 +97,19 @@
 
 .header-dropdown__value {
   color: $color-text;
-  font-size: 1rem;
-  line-height: 1;
+  font-family: $font-family-display;
+  font-size: $font-size-header-dropdown;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-header-dropdown;
+  letter-spacing: $letter-spacing-header-dropdown;
   white-space: nowrap;
+}
+
+.header-dropdown--compact .header-dropdown__value {
+  font-size: $font-size-header-dropdown-compact;
+  line-height: $line-height-header-dropdown-compact;
+  letter-spacing: $letter-spacing-header-dropdown-compact;
+  text-align: center;
 }
 
 .header-dropdown__chevron {
@@ -182,4 +188,121 @@
   min-height: 0;
   border-radius: $radius-shell;
   background: $color-surface;
+}
+
+.desktop-panel__content {
+  width: min(100%, $step-tabs-width);
+  margin-inline: auto;
+  padding-top: 1.25rem;
+}
+
+.step-tabs {
+  display: flex;
+  align-items: center;
+  width: $step-tabs-width;
+}
+
+.step-tabs__item {
+  display: flex;
+  align-items: center;
+}
+
+.step-tabs__connector {
+  flex: 0 0 auto;
+  width: $step-tab-connector-width;
+  height: $step-tab-connector-height;
+  border-radius: 100px;
+  background: $step-tab-track-color;
+}
+
+.step-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $step-tab-gap;
+  width: $step-tab-width;
+  height: $step-tab-height;
+  padding: $step-tab-padding-block $step-tab-padding-inline;
+  border-radius: $step-tab-radius;
+  border: 1px solid transparent;
+  background: $color-surface;
+  color: $color-text-strong;
+  font-family: $font-family-display;
+  font-size: $font-size-step-tab;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-step-tab;
+  letter-spacing: $letter-spacing-step-tab;
+}
+
+.step-tab__icon {
+  flex: 0 0 auto;
+}
+
+.step-tab__label {
+  white-space: nowrap;
+}
+
+.step-tab--complete {
+  background: $step-tab-complete-background;
+  border: 1px solid $step-tab-complete-border;
+  box-shadow: $step-tab-complete-shadow;
+}
+
+.step-tab--current {
+  background: $step-tab-current-background;
+  border: $step-tab-border-width solid transparent;
+  box-shadow: $step-tab-current-shadow;
+}
+
+.step-tab--current::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+        90deg,
+        $step-tab-current-border 0,
+        $step-tab-current-border $step-tab-current-dash-length,
+        transparent $step-tab-current-dash-length,
+        transparent calc(#{$step-tab-current-dash-length} + #{$step-tab-current-dash-gap})
+      )
+      top left / calc(100% - 1.25rem) $step-tab-border-width no-repeat,
+    repeating-linear-gradient(
+        90deg,
+        $step-tab-current-border 0,
+        $step-tab-current-border $step-tab-current-dash-length,
+        transparent $step-tab-current-dash-length,
+        transparent calc(#{$step-tab-current-dash-length} + #{$step-tab-current-dash-gap})
+      )
+      bottom left / calc(100% - 1.25rem) $step-tab-border-width no-repeat,
+    repeating-linear-gradient(
+        0deg,
+        $step-tab-current-border 0,
+        $step-tab-current-border $step-tab-current-dash-length,
+        transparent $step-tab-current-dash-length,
+        transparent calc(#{$step-tab-current-dash-length} + #{$step-tab-current-dash-gap})
+      )
+      top left / $step-tab-border-width calc(100% - 1.25rem) no-repeat,
+    repeating-linear-gradient(
+        0deg,
+        $step-tab-current-border 0,
+        $step-tab-current-border $step-tab-current-dash-length,
+        transparent $step-tab-current-dash-length,
+        transparent calc(#{$step-tab-current-dash-length} + #{$step-tab-current-dash-gap})
+      )
+      top right / $step-tab-border-width calc(100% - 1.25rem) no-repeat;
+  background-position:
+    top center,
+    bottom center,
+    center left,
+    center right;
+}
+
+.step-tab--upcoming {
+  background: $step-tab-upcoming-background;
+  box-shadow: $step-tab-upcoming-shadow;
+  color: $color-text;
 }

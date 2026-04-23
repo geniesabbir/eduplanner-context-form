@@ -3,6 +3,7 @@ import {
   HeaderDropdown,
   type HeaderDropdownItem,
 } from "../components/ui/HeaderDropdown";
+import { StepTabs, type StepTabItem } from "../components/ui/StepTabs";
 
 const savedAnswerItems: HeaderDropdownItem[] = [
   { id: "draft-1", label: "Saved Answers" },
@@ -14,6 +15,36 @@ const languageItems: HeaderDropdownItem[] = [
   { id: "en", label: "EN" },
   { id: "bn", label: "BN" },
   { id: "ar", label: "AR" },
+];
+
+const stepTabItems: StepTabItem[] = [
+  {
+    id: "select-template",
+    label: "Select Template",
+    iconSrc: "/icons/select-template.svg",
+    iconAlt: "",
+    iconWidth: 30,
+    iconHeight: 30,
+    state: "complete",
+  },
+  {
+    id: "provide-context",
+    label: "Provide Context",
+    iconSrc: "/icons/provided context.svg",
+    iconAlt: "",
+    iconWidth: 40,
+    iconHeight: 40,
+    state: "current",
+  },
+  {
+    id: "abilities",
+    label: "Abilities",
+    iconSrc: "/icons/abilities.svg",
+    iconAlt: "",
+    iconWidth: 32,
+    iconHeight: 32,
+    state: "upcoming",
+  },
 ];
 
 export default function Home() {
@@ -56,7 +87,11 @@ export default function Home() {
           </div>
         </header>
 
-        <div className="desktop-shell__panel" />
+        <div className="desktop-shell__panel">
+          <div className="desktop-panel__content">
+            <StepTabs items={stepTabItems} />
+          </div>
+        </div>
       </section>
     </main>
   );

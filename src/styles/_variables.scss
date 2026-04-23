@@ -40,12 +40,21 @@ $font-size-sm: 0.875rem;
 $font-size-body: 1rem;
 $font-size-section-title: 1.125rem;
 $font-size-page-title: 1.75rem;
+$font-size-step-tab: 1rem;
+$font-size-header-dropdown: 0.875rem;
+$font-size-header-dropdown-compact: 1rem;
 
 $line-height-base: 1.4;
 $line-height-relaxed: 1.5;
+$line-height-step-tab: 1.4;
+$line-height-header-dropdown: 1.4;
+$line-height-header-dropdown-compact: 1.5;
 
 $letter-spacing-base: 0;
 $letter-spacing-heading: -0.01em;
+$letter-spacing-step-tab: 0.005em;
+$letter-spacing-header-dropdown: 0.005em;
+$letter-spacing-header-dropdown-compact: -0.005em;
 
 $type-styles: (
   "page-title": (
@@ -108,4 +117,32 @@ $header-control-padding-inline: $space-3;
 $header-control-width: 10.75rem;
 $header-control-width-compact: 4.75rem;
 $header-control-chevron-size: 0.75rem;
+
+$step-tabs-width: 46.25rem;
+$step-tab-width: 12.25rem;
+$step-tab-connector-width: 4.75rem;
+$step-tab-connector-height: 0.125rem;
+$step-tab-height: 3.125rem;
+$step-tab-radius: $radius-md;
+$step-tab-border-width: 0.125rem;
+$step-tab-padding-block: 0.625rem;
+$step-tab-padding-inline: 1.25rem;
+$step-tab-gap: 0.75rem;
+$step-tab-current-dash-length: 0.625rem;
+$step-tab-current-dash-gap: 0.625rem;
+$step-tab-track-color: #e1d4f8;
+$step-tab-complete-background: #fcfaff;
+$step-tab-complete-shadow:
+  0 2px 4px rgba(182, 180, 185, 0.16),
+  inset 0 0 8px #d2c5ea;
+$step-tab-complete-border: $primary-400;
+$step-tab-current-background: $color-surface;
+$step-tab-current-shadow:
+  0 2px 4px rgba(182, 180, 185, 0.16),
+  inset 0 0 4px #e1d4f8;
+$step-tab-current-border: $primary-400;
+$step-tab-upcoming-background: $color-surface;
+$step-tab-upcoming-shadow:
+  0 2px 4px rgba(182, 180, 185, 0.16),
+  inset 0 0 4px #e1d4f8;
 $transition-base: 180ms ease;

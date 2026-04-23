@@ -1,0 +1,80 @@
+$white: #ffffff;
+$black: #050505;
+
+$primary-400: #8752e1;
+$primary-500: #6927da;
+$primary-600: #5a1ec9;
+
+$neutral-0: #ffffff;
+$neutral-100: #fcfcfd;
+$neutral-200: #f7f4fc;
+$neutral-300: #eceff3;
+$neutral-400: #dddddd;
+$neutral-600: #747476;
+$neutral-700: #454648;
+$neutral-900: #050505;
+
+$color-primary: $primary-500;
+$color-primary-hover: $primary-600;
+$color-text: $neutral-700;
+$color-text-strong: $neutral-900;
+$color-text-muted: $neutral-600;
+$color-background: $neutral-200;
+$color-surface: $neutral-0;
+$color-surface-muted: $neutral-100;
+$color-border: $neutral-400;
+$color-border-subtle: $neutral-300;
+
+$color-primary-rgb: 105, 39, 218;
+$color-text-rgb: 69, 70, 72;
+$color-text-strong-rgb: 5, 5, 5;
+$color-text-muted-rgb: 116, 116, 118;
+
+$font-family-display: var(--font-geist-sans, "SF Pro Display"), "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+$font-family-sans: var(--font-geist-sans, "SF Pro Text"), "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+$font-family-mono: var(--font-geist-mono, "SFMono-Regular"), "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-size-body: 1rem;
+$font-size-section-title: 1.125rem;
+$font-size-page-title: 1.75rem;
+
+$line-height-base: 1.4;
+$line-height-relaxed: 1.5;
+
+$letter-spacing-base: 0;
+$letter-spacing-heading: -0.01em;
+
+$type-styles: (
+  "page-title": (
+    family: $font-family-display,
+    size: $font-size-page-title,
+    weight: $font-weight-medium,
+    line-height: $line-height-base,
+    letter-spacing: $letter-spacing-heading,
+  ),
+  "section-title": (
+    family: $font-family-display,
+    size: $font-size-section-title,
+    weight: $font-weight-medium,
+    line-height: $line-height-base,
+    letter-spacing: $letter-spacing-heading,
+  ),
+  "body": (
+    family: $font-family-sans,
+    size: $font-size-body,
+    weight: $font-weight-regular,
+    line-height: $line-height-relaxed,
+    letter-spacing: $letter-spacing-base,
+  ),
+);
+
+$shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.08);
+$shadow-md: 0 10px 30px rgba(15, 23, 42, 0.06);
+
+$radius-sm: 0.625rem;
+$radius-md: 0.75rem;
+$radius-lg: 1.25rem;
+$radius-xl: 1.5rem;
+$transition-base: 180ms ease;

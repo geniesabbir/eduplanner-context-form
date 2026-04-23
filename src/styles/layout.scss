@@ -33,8 +33,8 @@
   justify-content: space-between;
   gap: $desktop-shell-gap;
   min-height: $header-control-height;
-  padding-inline: $space-2;
-  padding-top: $space-2;
+  padding-inline: $header-inline-padding;
+  padding-top: $header-top-padding;
 }
 
 .brand-lockup {
@@ -52,7 +52,7 @@
 .desktop-shell__actions {
   display: inline-flex;
   align-items: center;
-  gap: $desktop-shell-gap;
+  gap: $header-actions-gap;
 }
 
 .header-dropdown {

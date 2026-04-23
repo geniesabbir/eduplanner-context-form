@@ -194,6 +194,8 @@
   width: min(100%, $step-tabs-width);
   margin-inline: auto;
   padding-top: 1.25rem;
+  display: grid;
+  gap: 1.75rem;
 }
 
 .step-tabs {
@@ -305,4 +307,141 @@
   background: $step-tab-upcoming-background;
   box-shadow: $step-tab-upcoming-shadow;
   color: $color-text;
+}
+
+.content-header {
+  display: grid;
+  gap: $content-header-gap;
+  width: $content-header-width;
+}
+
+.content-header__back {
+  display: inline-flex;
+  align-items: center;
+  gap: $content-back-gap;
+  width: $content-back-width;
+  height: $content-back-height;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: $color-text;
+}
+
+.content-header__back-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 1rem;
+  height: 1rem;
+}
+
+.content-header__back-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-left: 1.5px solid $color-text;
+  border-bottom: 1.5px solid $color-text;
+  transform: translate(-35%, -50%) rotate(45deg);
+}
+
+.content-header__back-label {
+  color: $color-text;
+  font-family: $font-family-display;
+  font-size: $font-size-back-link;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-back-link;
+  letter-spacing: $letter-spacing-back-link;
+}
+
+.content-header__headline-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: $content-header-width;
+  min-height: $content-title-row-height;
+}
+
+.content-header__title {
+  width: max-content;
+  min-height: $content-title-height;
+  color: $color-text-strong;
+  font-family: $font-family-display;
+  font-size: $font-size-content-title;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-content-title;
+  letter-spacing: $letter-spacing-content-title;
+  white-space: nowrap;
+}
+
+.content-header__action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $content-action-width;
+  height: $content-action-height;
+  padding: 0.75rem 1.3125rem;
+  border: 0;
+  border-radius: $content-action-radius;
+  background: linear-gradient(180deg, #6927da 0%, #6927da 100%);
+  box-shadow: $content-action-shadow;
+}
+
+.content-header__action-label {
+  color: $color-surface;
+  font-family: $font-family-display;
+  font-size: $font-size-content-action;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-content-action;
+  letter-spacing: $letter-spacing-content-action;
+  white-space: nowrap;
+}
+
+.content-header__progress-row {
+  display: flex;
+  align-items: center;
+  gap: $content-progress-gap;
+  width: $content-header-width;
+  min-height: $content-progress-height;
+}
+
+.content-header__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $content-progress-badge-width;
+  height: $content-progress-badge-height;
+  padding: 0.125rem 0.625rem;
+  border: 1px solid $content-progress-badge-border;
+  border-radius: $content-progress-badge-radius;
+  background: $content-progress-badge-bg;
+}
+
+.content-header__badge-label {
+  color: $content-progress-badge-text;
+  font-family: $font-family-display;
+  font-size: $font-size-progress-badge;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-progress-badge;
+  letter-spacing: $letter-spacing-progress-badge;
+  text-align: center;
+}
+
+.content-header__track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.25rem;
+  width: calc(#{$content-header-width} - #{$content-progress-badge-width} - #{$content-progress-gap});
+  height: $content-progress-track-height;
+}
+
+.content-header__segment {
+  border-radius: $content-progress-track-radius;
+  background: $content-progress-track-color;
+}
+
+.content-header__segment.is-active {
+  background: $content-progress-active-color;
+  box-shadow: $content-progress-segment-shadow;
 }

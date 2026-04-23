@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ContentHeader } from "../components/ui/ContentHeader";
 import {
   HeaderDropdown,
   type HeaderDropdownItem,
@@ -90,6 +91,12 @@ export default function Home() {
         <div className="desktop-shell__panel">
           <div className="desktop-panel__content">
             <StepTabs items={stepTabItems} />
+            <ContentHeader
+              title="Provide Context"
+              actionLabel="Save Answers"
+              currentStep={1}
+              totalSteps={4}
+            />
           </div>
         </div>
       </section>

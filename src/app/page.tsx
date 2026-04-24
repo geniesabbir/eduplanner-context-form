@@ -54,6 +54,16 @@ export default function Home() {
     <main className="desktop-stage">
       <section className="desktop-shell">
         <header className="desktop-shell__header">
+          <button className="desktop-shell__mobile-back" type="button">
+            <span
+              className="desktop-shell__mobile-back-icon"
+              aria-hidden="true"
+            />
+            <span className="desktop-shell__mobile-back-label">
+              Back to Tools
+            </span>
+          </button>
+
           <div className="brand-lockup" aria-label="EduPlanner">
             <Image
               className="brand-lockup__logo"

@@ -180,7 +180,7 @@ export function ProvideContextForm() {
             />
           </div>
 
-          <div className="selection-grid">
+          <div className="selection-grid selection-grid--grades">
             {gradeOptions.map((option) => (
               <SelectionChip
                 key={option}
@@ -196,7 +196,7 @@ export function ProvideContextForm() {
           title="Single Select with Others"
           description="Chapter name from Grade 6 Biology Book."
         >
-          <div className="selection-grid">
+          <div className="selection-grid selection-grid--subjects">
             {subjectOptions.map((option) => (
               <SelectionChip
                 key={option}
@@ -264,7 +264,9 @@ export function ProvideContextForm() {
             <div className="slider-field__visual">
               <div
                 className="slider-field__tooltip"
-                style={{ left: `${sliderProgress}%` }}
+                style={{
+                  left: `clamp(var(--tooltip-half), ${sliderProgress}%, 100% - var(--tooltip-half))`,
+                }}
               >
                 {minutes} mins
               </div>

@@ -109,6 +109,20 @@ $space-2: 0.5rem;
 $space-3: 0.75rem;
 $space-4: 1rem;
 
+$breakpoint-sm: 36rem;
+$breakpoint-md: 48rem;
+$breakpoint-lg: 62rem;
+$breakpoint-xl: 75rem;
+
+$mobile-stage-padding-inline: 1rem;
+$mobile-panel-padding-inline: 1rem;
+$mobile-panel-padding-block: 1rem;
+$mobile-header-height: 3rem;
+$mobile-step-tab-height: 3.25rem;
+$mobile-content-title-size: 1.25rem;
+$mobile-actions-gap: 0.75rem;
+$mobile-actions-padding-bottom: 2rem;
+
 $desktop-shell-width: 70.125rem;
 $desktop-shell-min-height: 99rem;
 $desktop-shell-padding: $space-2;
@@ -255,7 +269,7 @@ $form-control-shadow: inset 0 0 4px #adadad;
 $form-chip-shadow: inset 0 0 4px #dddde1;
 $form-chip-selected-shadow: inset 0 0 4px #bea1f0;
 
-$form-actions-offset-top: 2.5rem;
+$form-actions-offset-top: 4rem;
 $form-actions-offset-bottom: 2.5rem;
 $form-actions-width: 46.25rem;
 $form-actions-gap: 0.5rem;

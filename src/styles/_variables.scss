@@ -1,3 +1,16 @@
+// =============================================================================
+// Design tokens
+// -----------------------------------------------------------------------------
+// Organized in layers:
+//   1. Palette         — raw colors
+//   2. Semantic color  — purpose-named aliases (text, surface, border, ...)
+//   3. Typography      — families, sizes, weights, letter-spacing, type styles
+//   4. Effects         — shadows, radii, transitions
+//   5. Spacing         — scale + breakpoints
+//   6. Component       — per-component measurements (shell, header, form, ...)
+// =============================================================================
+
+// ─── 1. Palette ─────────────────────────────────────────────────────────────
 $primary-400: #8752e1;
 $primary-500: #6927da;
 $primary-600: #5a1ec9;
@@ -11,6 +24,7 @@ $neutral-600: #747476;
 $neutral-700: #454648;
 $neutral-900: #050505;
 
+// ─── 2. Semantic color ──────────────────────────────────────────────────────
 $color-primary: $primary-500;
 $color-primary-hover: $primary-600;
 $color-text: $neutral-700;
@@ -30,6 +44,7 @@ $color-text-rgb: 69, 70, 72;
 $color-text-strong-rgb: 5, 5, 5;
 $color-text-muted-rgb: 116, 116, 118;
 
+// ─── 3. Typography ──────────────────────────────────────────────────────────
 $font-family-display: var(--font-geist-sans, "SF Pro Display"), "SF Pro Display", "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 $font-family-sans: var(--font-geist-sans, "SF Pro Text"), "SF Pro Text", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
 $font-family-mono: var(--font-geist-mono, "SFMono-Regular"), "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -92,6 +107,7 @@ $type-styles: (
   ),
 );
 
+// ─── 4. Effects ─────────────────────────────────────────────────────────────
 $shadow-sm: 0 2px 4px rgba(15, 23, 42, 0.08);
 $shadow-md: 0 10px 30px rgba(15, 23, 42, 0.06);
 $shadow-shell-inset: inset 0 0 4px rgba(194, 213, 139, 0.34);
@@ -104,6 +120,9 @@ $radius-lg: 1.25rem;
 $radius-xl: 1.5rem;
 $radius-shell: 1.25rem;
 
+// ─── 5. Spacing & breakpoints ───────────────────────────────────────────────
+// Breakpoints mirror Bootstrap's $grid-breakpoints (sm 576, md 768, lg 992, xl 1200)
+// so component partials can use either these or Bootstrap's media-breakpoint-down().
 $space-1: 0.25rem;
 $space-2: 0.5rem;
 $space-3: 0.75rem;
@@ -114,6 +133,8 @@ $breakpoint-md: 48rem;
 $breakpoint-lg: 62rem;
 $breakpoint-xl: 75rem;
 
+// ─── 6. Component tokens ────────────────────────────────────────────────────
+// Mobile overrides — values only applied inside @include media-breakpoint-down(md).
 $mobile-stage-padding-inline: 1rem;
 $mobile-panel-padding-inline: 1rem;
 $mobile-panel-padding-block: 1rem;
@@ -123,14 +144,17 @@ $mobile-content-title-size: 1.25rem;
 $mobile-actions-gap: 0.75rem;
 $mobile-actions-padding-bottom: 2rem;
 
+// Shell
 $desktop-shell-width: 70.125rem;
 $desktop-shell-min-height: 99rem;
 $desktop-shell-padding: $space-2;
 $desktop-shell-gap: $space-2;
 
+// Brand
 $brand-logo-width: 7.875rem;
 $brand-logo-height: 1.5rem;
 
+// Header
 $header-inline-padding: 0.75rem;
 $header-top-padding: 0;
 $header-actions-gap: $space-1;
@@ -144,6 +168,7 @@ $header-control-width: 10.75rem;
 $header-control-width-compact: 4.75rem;
 $header-control-chevron-size: 0.75rem;
 
+// Step tabs
 $step-tabs-width: 46.25rem;
 $step-tab-width: 12.25rem;
 $step-tab-connector-width: 4.75rem;
@@ -172,6 +197,7 @@ $step-tab-upcoming-shadow:
   0 2px 4px rgba(182, 180, 185, 0.16),
   inset 0 0 4px #e1d4f8;
 
+// Content header
 $content-header-width: 46.25rem;
 $content-header-gap: 1rem;
 $content-back-gap: 0.25rem;
@@ -202,6 +228,7 @@ $content-progress-segment-shadow:
   0 0 4px rgba(205, 177, 255, 0.81),
   inset 0 0 2px rgba(206, 179, 255, 0.58);
 
+// Form card + controls
 $form-card-width: 46.25rem;
 $form-card-background: #fbf8ff;
 $form-card-radius: 1.5rem;
@@ -269,6 +296,7 @@ $form-control-shadow: inset 0 0 4px #adadad;
 $form-chip-shadow: inset 0 0 4px #dddde1;
 $form-chip-selected-shadow: inset 0 0 4px #bea1f0;
 
+// Form actions
 $form-actions-offset-top: 4rem;
 $form-actions-offset-bottom: 2.5rem;
 $form-actions-width: 46.25rem;

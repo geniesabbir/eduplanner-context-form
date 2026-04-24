@@ -1,0 +1,14 @@
+// Bootstrap SCSS tokens — functions, variables, and mixins only (no CSS output).
+// Importing this gives component partials access to:
+//   - $grid-breakpoints, $spacers, $utilities-colors, ...
+//   - @include media-breakpoint-down(md), media-breakpoint-up(lg), ...
+//   - color functions: tint-color, shade-color, ...
+//
+// Using legacy @import because Bootstrap 5.x still ships with @import-based partials.
+// Once Bootstrap migrates to @use, this file can switch to @forward.
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";

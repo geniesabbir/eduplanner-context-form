@@ -1,0 +1,105 @@
+@import "../bootstrap";
+@import "../variables";
+
+// Top bar: mobile back, brand logo, right-aligned action controls.
+
+.desktop-shell__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $desktop-shell-gap;
+  min-height: $header-control-height;
+  padding-inline: $header-inline-padding;
+  padding-top: $header-top-padding;
+}
+
+.desktop-shell__mobile-back {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: $color-text;
+  flex: 0 1 auto;
+}
+
+.desktop-shell__mobile-back-icon {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  flex: 0 0 auto;
+}
+
+.desktop-shell__mobile-back-icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-left: 1.5px solid $color-text;
+  border-bottom: 1.5px solid $color-text;
+  transform: translate(-35%, -50%) rotate(45deg);
+}
+
+.desktop-shell__mobile-back-label {
+  color: $color-text;
+  font-family: $font-family-display;
+  font-size: $font-size-back-link;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-back-link;
+  letter-spacing: $letter-spacing-base;
+  white-space: nowrap;
+}
+
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+}
+
+.brand-lockup__logo {
+  display: block;
+  width: $brand-logo-width;
+  height: $brand-logo-height;
+}
+
+.desktop-shell__actions {
+  display: inline-flex;
+  align-items: center;
+  gap: $header-actions-gap;
+}
+
+@include media-breakpoint-down(md) {
+  .desktop-shell__header {
+    justify-content: flex-start;
+    min-height: $mobile-header-height;
+    padding: 0.5rem $mobile-stage-padding-inline;
+    background: linear-gradient(
+      90deg,
+      $color-shell-start 0%,
+      $color-shell-mid 48%,
+      $color-shell-end 100%
+    );
+  }
+
+  .desktop-shell__mobile-back {
+    display: inline-flex;
+    gap: 0.75rem;
+  }
+
+  .desktop-shell__mobile-back-label {
+    letter-spacing: $letter-spacing-back-link;
+  }
+
+  .brand-lockup {
+    display: none;
+  }
+
+  .desktop-shell__actions {
+    margin-left: auto;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+}

@@ -1,14 +1,6 @@
 import Image from "next/image";
 
-export type StepTabItem = {
-  id: string;
-  label: string;
-  iconSrc: string;
-  iconAlt: string;
-  iconWidth: number;
-  iconHeight: number;
-  state: "complete" | "current" | "upcoming";
-};
+import type { StepTabItem } from "@/types/steps";
 
 type StepTabsProps = {
   items: StepTabItem[];

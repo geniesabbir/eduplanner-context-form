@@ -1,0 +1,91 @@
+@import "../bootstrap";
+@import "../variables";
+
+// Outer page frame, rounded shell, and inner content surface.
+
+.app-shell,
+.app-shell__body {
+  min-height: 100vh;
+}
+
+.desktop-stage {
+  width: min(100% - 1rem, #{$desktop-shell-width});
+  margin-inline: auto;
+  padding-block: 0.5rem;
+}
+
+.desktop-shell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: $desktop-shell-gap;
+  min-height: $desktop-shell-min-height;
+  padding: $desktop-shell-padding;
+  border-radius: $radius-shell;
+  background: linear-gradient(
+    90deg,
+    $color-shell-start 0%,
+    $color-shell-mid 48%,
+    $color-shell-end 100%
+  );
+  box-shadow: $shadow-shell-inset;
+}
+
+.desktop-shell__panel {
+  min-height: 0;
+  border-radius: $radius-shell;
+  background: $color-surface;
+}
+
+.desktop-panel__content {
+  width: min(100%, $step-tabs-width);
+  margin-inline: auto;
+  padding-top: 1.25rem;
+  display: grid;
+  gap: 1.75rem;
+}
+
+@include media-breakpoint-down(lg) {
+  .desktop-stage {
+    width: min(100% - 1.5rem, 64rem);
+    padding-block: 0.75rem;
+  }
+
+  .desktop-shell {
+    min-height: auto;
+  }
+
+  .desktop-panel__content {
+    width: min(100%, 52rem);
+    padding-inline: 1.25rem;
+    padding-bottom: 2rem;
+    gap: 1.5rem;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .desktop-stage {
+    width: 100%;
+    padding: 0;
+  }
+
+  .desktop-shell {
+    min-height: 100vh;
+    padding: 0;
+    gap: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .desktop-shell__panel {
+    border-radius: 0;
+    background: transparent;
+  }
+
+  .desktop-panel__content {
+    width: 100%;
+    padding: $mobile-panel-padding-block $mobile-panel-padding-inline
+      $mobile-actions-padding-bottom;
+    gap: 1.5rem;
+  }
+}

@@ -1,0 +1,141 @@
+@import "../bootstrap";
+@import "../variables";
+
+// Selection grids (grades, subjects, difficulty levels) and their chips.
+
+.selection-grid {
+  display: grid;
+  grid-template-columns: repeat(6, $form-chip-width);
+  gap: $form-chip-gap;
+}
+
+.selection-grid--levels {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.selection-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $space-2;
+  width: $form-chip-width;
+  height: $form-chip-height;
+  padding: $form-chip-padding;
+  border: 1px solid $form-chip-border;
+  border-radius: $form-chip-radius;
+  background: $color-surface;
+  box-shadow: $form-chip-shadow;
+}
+
+.selection-chip.is-selected {
+  border-color: $form-chip-selected-border;
+  background: $form-chip-selected-bg;
+  box-shadow: $form-chip-selected-shadow;
+}
+
+.selection-chip--multi {
+  width: 100%;
+  border-color: $form-multi-chip-border;
+  box-shadow: $form-multi-chip-shadow;
+}
+
+.selection-chip__label {
+  color: $color-text;
+  font-family: $font-family-display;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-regular;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.selection-chip__indicator,
+.selection-chip__checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: $primary-500;
+}
+
+.selection-chip__indicator {
+  width: $form-chip-indicator-size;
+  height: $form-chip-indicator-size;
+  border: 1px solid #d3d7dd;
+  border-radius: 50%;
+  background: $color-surface;
+}
+
+.selection-chip.is-selected .selection-chip__indicator {
+  border-color: $primary-500;
+}
+
+.selection-chip.is-selected .selection-chip__indicator::after {
+  content: "";
+  width: 0.625rem;
+  height: 0.625rem;
+  border-radius: 50%;
+  background: $primary-500;
+}
+
+.selection-chip__checkbox {
+  width: $form-chip-checkbox-size;
+  height: $form-chip-checkbox-size;
+  border: 1px solid #d3d7dd;
+  border-radius: 0.375rem;
+  background: $color-surface;
+  font-size: 0.875rem;
+  line-height: 1;
+}
+
+.selection-chip--multi.is-selected {
+  border-color: $form-multi-chip-selected-border;
+  background: $form-multi-chip-selected-bg;
+  box-shadow: $form-multi-chip-selected-shadow;
+}
+
+.selection-chip--multi.is-selected .selection-chip__checkbox {
+  border-color: $primary-400;
+}
+
+@include media-breakpoint-down(lg) {
+  .selection-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .selection-chip {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .selection-chip__label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .selection-grid--grades {
+    display: none;
+  }
+
+  .selection-grid--subjects {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .selection-grid--subjects .selection-chip {
+    justify-content: center;
+    padding-inline: 0.5rem;
+  }
+
+  .selection-grid--subjects .selection-chip__indicator {
+    display: none;
+  }
+
+  .selection-grid--levels {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .selection-grid--levels .selection-chip:last-child {
+    grid-column: 1 / -1;
+  }
+}

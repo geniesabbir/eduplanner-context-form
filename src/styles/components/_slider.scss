@@ -1,0 +1,167 @@
+@import "../bootstrap";
+@import "../variables";
+
+// Custom duration slider: visual-only track overlaid by an invisible
+// native <input type="range"> for interaction. Tooltip is clamped so
+// it never overflows the track at the extremes.
+
+.slider-field {
+  display: grid;
+  grid-template-columns: $form-slider-visual-width $form-slider-value-width;
+  align-items: center;
+  gap: $form-slider-gap;
+  width: auto;
+}
+
+.slider-field__visual {
+  --tooltip-half: calc(#{$form-slider-tooltip-width} / 2);
+  display: grid;
+  position: relative;
+  width: $form-slider-visual-width;
+  min-width: $form-slider-visual-width;
+  padding-top: calc(#{$form-slider-tooltip-height} + #{$form-slider-tooltip-gap});
+  gap: 0.75rem;
+}
+
+.slider-field__tooltip {
+  position: absolute;
+  top: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: $form-slider-tooltip-width;
+  height: $form-slider-tooltip-height;
+  border: 1px solid #d8d8d8;
+  border-radius: 0.75rem;
+  background: $color-surface;
+  color: $form-slider-tooltip-text-color;
+  font-family: $font-family-display;
+  font-size: $form-slider-text-size;
+  font-weight: $font-weight-regular;
+  line-height: $form-slider-text-line-height;
+  letter-spacing: $form-slider-text-letter-spacing;
+  transform: translateX(-50%);
+  box-shadow: $form-control-shadow;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.slider-field__track {
+  position: relative;
+  width: 100%;
+  height: $form-slider-track-height;
+  border-radius: 100px;
+  background: $form-slider-track-color;
+  overflow: hidden;
+}
+
+.slider-field__track-active {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: $form-slider-active-width;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    $form-slider-active-color-start 0%,
+    $form-slider-active-color-end 100%
+  );
+  box-shadow: $form-slider-active-shadow;
+}
+
+.slider-field__ticks {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.slider-field__tick {
+  position: absolute;
+  top: 50%;
+  width: $form-slider-tick-width;
+  height: $form-slider-tick-height;
+  background: $form-slider-tick-color;
+  transform: translate(-50%, -50%);
+}
+
+.slider-field__range {
+  position: absolute;
+  inset: -0.5rem 0;
+  width: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.slider-field__range::-webkit-slider-thumb {
+  width: 1px;
+  height: 1px;
+  appearance: none;
+}
+
+.slider-field__range::-moz-range-thumb {
+  width: 1px;
+  height: 1px;
+  border: 0;
+  background: transparent;
+}
+
+.slider-field__marks {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0;
+}
+
+.slider-field__mark {
+  color: $color-text-muted;
+  font-family: $font-family-display;
+  font-size: $form-slider-mark-size;
+  font-weight: $font-weight-regular;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.slider-field__value {
+  align-self: end;
+}
+
+@include media-breakpoint-down(lg) {
+  .slider-field {
+    grid-template-columns: minmax(0, 1fr) $form-slider-value-width;
+    width: 100%;
+  }
+
+  .slider-field__visual {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .slider-field {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .slider-field__visual {
+    padding-top: calc(#{$form-slider-tooltip-height} + #{$form-slider-tooltip-gap});
+  }
+
+  .slider-field__value {
+    width: 100%;
+  }
+
+  .form-control--compact {
+    width: 100%;
+    justify-self: stretch;
+  }
+
+  .slider-field__range::-webkit-slider-runnable-track {
+    height: $form-slider-track-height;
+    background: transparent;
+  }
+
+  .slider-field__range::-moz-range-track {
+    height: $form-slider-track-height;
+    background: transparent;
+  }
+}

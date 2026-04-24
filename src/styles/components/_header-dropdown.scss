@@ -1,0 +1,152 @@
+@import "../bootstrap";
+@import "../variables";
+
+// Pill-style dropdowns used in the top bar (Saved Answers, language).
+
+.header-dropdown {
+  position: relative;
+}
+
+.header-dropdown__trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $header-control-gap;
+  width: $header-control-width;
+  height: $header-control-height;
+  padding: $header-control-padding-block $header-control-padding-inline;
+  border: 1px solid rgba($color-border-subtle, 0.92);
+  border-radius: $header-control-radius;
+  background: $color-surface;
+  box-shadow: $shadow-dropdown;
+  color: $color-text;
+  transition:
+    border-color $transition-base,
+    box-shadow $transition-base,
+    transform $transition-base;
+}
+
+.header-dropdown__trigger:hover {
+  border-color: rgba($primary-400, 0.45);
+}
+
+.header-dropdown.is-open .header-dropdown__trigger {
+  border-color: rgba($primary-400, 0.45);
+  box-shadow: $shadow-dropdown, 0 0 0 3px rgba($primary-400, 0.08);
+}
+
+.header-dropdown--compact .header-dropdown__trigger {
+  width: $header-control-width-compact;
+}
+
+.header-dropdown__icon {
+  flex: 0 0 auto;
+}
+
+.header-dropdown__value {
+  color: $color-text;
+  font-family: $font-family-display;
+  font-size: $font-size-header-dropdown;
+  font-weight: $font-weight-regular;
+  line-height: $line-height-header-dropdown;
+  letter-spacing: $letter-spacing-header-dropdown;
+  white-space: nowrap;
+}
+
+.header-dropdown--compact .header-dropdown__value {
+  font-size: $font-size-header-dropdown-compact;
+  line-height: $line-height-header-dropdown-compact;
+  letter-spacing: $letter-spacing-header-dropdown-compact;
+  text-align: center;
+}
+
+.header-dropdown__chevron {
+  position: relative;
+  flex: 0 0 auto;
+  width: $header-control-chevron-size;
+  height: $header-control-chevron-size;
+  opacity: 0.8;
+  color: transparent;
+  font-size: 0;
+}
+
+.header-dropdown__chevron::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0.4375rem;
+  height: 0.4375rem;
+  border-right: 1.5px solid $color-text-muted;
+  border-bottom: 1.5px solid $color-text-muted;
+  transform: rotate(45deg) translateY(-12%);
+}
+
+.header-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 0.625rem);
+  right: 0;
+  z-index: 10;
+  display: grid;
+  min-width: 100%;
+  padding: 0.5rem;
+  border: 1px solid rgba($color-border-subtle, 0.92);
+  border-radius: $radius-md;
+  background: $color-surface;
+  box-shadow: $shadow-md;
+}
+
+.header-dropdown--compact .header-dropdown__menu {
+  min-width: $header-control-width-compact;
+}
+
+.header-dropdown__option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border: 0;
+  border-radius: 0.75rem;
+  background: transparent;
+  color: $color-text;
+  font-family: $font-family-sans;
+  font-size: 0.9375rem;
+  font-weight: $font-weight-medium;
+  line-height: 1;
+  text-align: left;
+}
+
+.header-dropdown__option:hover {
+  background: $color-surface-muted;
+}
+
+.header-dropdown__option.is-selected {
+  color: $color-text-strong;
+  background: rgba($primary-400, 0.08);
+}
+
+.header-dropdown__check {
+  color: $color-primary;
+  font-size: 0.875rem;
+}
+
+@include media-breakpoint-down(md) {
+  .header-dropdown__trigger {
+    width: 9rem;
+    height: 2.5rem;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .header-dropdown--compact .header-dropdown__trigger {
+    width: 4.75rem;
+    padding-inline: 0.75rem;
+  }
+
+  .header-dropdown__value {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

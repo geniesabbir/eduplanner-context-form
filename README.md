@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EduPlanner — Provide Context
 
-## Getting Started
+Pixel-perfect, fully responsive implementation of the "Provide Context" form screen from the EduPlanner Figma brief.
 
-First, run the development server:
+**Stack**: Next.js 16 (App Router) · React 19 · Bootstrap 5 · SCSS · TypeScript.
+
+---
+
+## Getting started
+
+Requirements: Node 20+, npm 10+.
 
 ```bash
+# 1. Install
+npm install
+
+# 2. Run the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Other scripts:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command           | Purpose                             |
+| ----------------- | ----------------------------------- |
+| `npm run dev`     | Start the dev server (Turbopack)    |
+| `npm run build`   | Production build                    |
+| `npm run start`   | Serve the production build          |
+| `npm run lint`    | Lint TypeScript and JSX             |
 
-## Learn More
+## Environment variables
 
-To learn more about Next.js, take a look at the following resources:
+None — this is a frontend-only UI task. No backend, no APIs.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Folder structure
 
-## Deploy on Vercel
+```
+src/
+├── app/                       # Next.js App Router entry
+│   ├── globals.scss           # Imports: base + component partials
+│   ├── layout.tsx             # Root HTML shell
+│   └── page.tsx               # Home route — composes the screen
+├── components/
+│   └── ui/                    # Presentational components
+│       ├── ContentHeader.tsx
+│       ├── FormActions.tsx
+│       ├── FormSection.tsx
+│       ├── HeaderDropdown.tsx
+│       ├── ProvideContextForm.tsx   # Orchestrator — composes subcomponents
+│       ├── SelectionChip.tsx
+│       ├── SliderField.tsx
+│       └── StepTabs.tsx
+├── data/                      # Static content (options, dropdown items, step list)
+│   ├── form-options.ts
+│   ├── header.ts
+│   └── steps.ts
+├── hooks/                     # Reusable hooks
+│   └── useContextForm.ts      # Form state + handlers
+├── styles/
+│   ├── _base.scss             # Reset + CSS custom properties
+│   ├── _bootstrap.scss        # Bootstrap SCSS tokens (functions, vars, mixins)
+│   ├── _mixins.scss           # @include type-style(...)
+│   ├── _variables.scss        # Design tokens (palette → component tokens)
+│   └── components/            # One partial per component, mobile-first
+│       ├── _content-header.scss
+│       ├── _form.scss
+│       ├── _header-dropdown.scss
+│       ├── _header.scss
+│       ├── _index.scss        # Aggregator
+│       ├── _selection.scss
+│       ├── _shell.scss
+│       ├── _slider.scss
+│       └── _step-tabs.scss
+└── types/                     # Shared TypeScript types
+    ├── form.ts
+    ├── header.ts
+    └── steps.ts
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Styling architecture
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Bootstrap SCSS** is imported in `_bootstrap.scss` (functions, variables, mixins only) so component partials can use `@include media-breakpoint-down(md)` and Bootstrap's `$grid-breakpoints` rather than hand-rolled breakpoint math.
+- **BEM-ish class names** (`.context-form__card`, `.selection-chip--multi`) scope styles to components without a CSS-in-JS runtime.
+- **Design tokens** live in `_variables.scss`, grouped into 6 layers: palette → semantic color → typography → effects → spacing → component. Change a value once, it propagates everywhere.
+- **Component partials** are colocated by UI concern (`_step-tabs.scss`, `_slider.scss`, ...). Each partial contains the component's desktop styles plus its responsive overrides, so you can read one file to understand one component end-to-end.
+- **Precompiled Bootstrap CSS** is still imported in `app/layout.tsx` to enable Bootstrap utility classes and reboot.
+
+## Component architecture
+
+- `ProvideContextForm` is a thin orchestrator — it reads state from `useContextForm`, and delegates rendering to `FormSection`, `SelectionChip`, `SliderField`, and `FormActions`.
+- `useContextForm` owns all form state: defaults, clamping (`grade` ∈ [1, 12]), nearest-mark snapping for the slider, and reset/submit handlers.
+- Static content (`GRADE_OPTIONS`, `SUBJECT_OPTIONS`, `STEP_TAB_ITEMS`, dropdown items) lives in `src/data/` so components are pure view logic.
+- Shared types (`StepTabItem`, `HeaderDropdownItem`, `DifficultyLevel`) are in `src/types/` with no runtime dependencies.
+
+## Responsive strategy
+
+Three layout tiers, all driven by Bootstrap's `media-breakpoint-down`:
+
+| Width            | Treatment                                                  |
+| ---------------- | ---------------------------------------------------------- |
+| ≥ 992px (lg+)    | Figma desktop layout: fixed shell, 6-col grades grid       |
+| 768 – 991px (md) | Fluid containers, 4-col chip grids, stacked slider         |
+| ≤ 767px          | Full-bleed, gradient header, icon-only steppers, single-column slider, column-reverse actions (Next on top) |
+
+## Deploy
+
+Any Next.js-compatible host works. Easiest path: push to GitHub and import in Vercel.
+
+```bash
+npm run build
+npm run start
+```

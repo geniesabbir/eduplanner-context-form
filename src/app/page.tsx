@@ -1,53 +1,11 @@
 import Image from "next/image";
-import { ContentHeader } from "../components/ui/ContentHeader";
-import {
-  HeaderDropdown,
-  type HeaderDropdownItem,
-} from "../components/ui/HeaderDropdown";
-import { ProvideContextForm } from "../components/ui/ProvideContextForm";
-import { StepTabs, type StepTabItem } from "../components/ui/StepTabs";
 
-const savedAnswerItems: HeaderDropdownItem[] = [
-  { id: "draft-1", label: "Saved Answers" },
-  { id: "physics-plan", label: "Physics Plan" },
-  { id: "biology-notes", label: "Biology Notes" },
-];
-
-const languageItems: HeaderDropdownItem[] = [
-  { id: "en", label: "EN" },
-  { id: "bn", label: "BN" },
-  { id: "ar", label: "AR" },
-];
-
-const stepTabItems: StepTabItem[] = [
-  {
-    id: "select-template",
-    label: "Select Template",
-    iconSrc: "/icons/select-template.svg",
-    iconAlt: "",
-    iconWidth: 30,
-    iconHeight: 30,
-    state: "complete",
-  },
-  {
-    id: "provide-context",
-    label: "Provide Context",
-    iconSrc: "/icons/provided context.svg",
-    iconAlt: "",
-    iconWidth: 40,
-    iconHeight: 40,
-    state: "current",
-  },
-  {
-    id: "abilities",
-    label: "Abilities",
-    iconSrc: "/icons/abilities.svg",
-    iconAlt: "",
-    iconWidth: 32,
-    iconHeight: 32,
-    state: "upcoming",
-  },
-];
+import { ContentHeader } from "@/components/ui/ContentHeader";
+import { HeaderDropdown } from "@/components/ui/HeaderDropdown";
+import { ProvideContextForm } from "@/components/ui/ProvideContextForm";
+import { StepTabs } from "@/components/ui/StepTabs";
+import { LANGUAGE_ITEMS, SAVED_ANSWER_ITEMS } from "@/data/header";
+import { STEP_TAB_ITEMS } from "@/data/steps";
 
 export default function Home() {
   return (
@@ -83,7 +41,7 @@ export default function Home() {
               iconWidth={16}
               iconHeight={16}
               initialItemId="draft-1"
-              items={savedAnswerItems}
+              items={SAVED_ANSWER_ITEMS}
             />
 
             <HeaderDropdown
@@ -94,14 +52,14 @@ export default function Home() {
               iconWidth={18}
               iconHeight={18}
               initialItemId="en"
-              items={languageItems}
+              items={LANGUAGE_ITEMS}
             />
           </div>
         </header>
 
         <div className="desktop-shell__panel">
           <div className="desktop-panel__content">
-            <StepTabs items={stepTabItems} />
+            <StepTabs items={STEP_TAB_ITEMS} />
             <ContentHeader
               title="Provide Context"
               actionLabel="Save Answers"

@@ -1,0 +1,11 @@
+// Aggregates all component-scoped styles in the order they appear in the UI.
+// Import this once from globals.scss.
+
+@import "./shell";
+@import "./header";
+@import "./header-dropdown";
+@import "./step-tabs";
+@import "./content-header";
+@import "./form";
+@import "./selection";
+@import "./slider";

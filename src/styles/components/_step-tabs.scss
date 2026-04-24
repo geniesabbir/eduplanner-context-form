@@ -1,0 +1,191 @@
+@import "../bootstrap";
+@import "../variables";
+
+// Progress stepper above the form. Three states: complete, current, upcoming.
+// On desktop, "current" draws a dashed inner border via repeating gradients.
+// On mobile, "complete" gets an outward dashed outline and "current" is flattened
+// because the mobile stepper is icon-only and only one active state reads clearly.
+
+.step-tabs {
+  display: flex;
+  align-items: center;
+  width: $step-tabs-width;
+}
+
+.step-tabs__item {
+  display: flex;
+  align-items: center;
+}
+
+.step-tabs__connector {
+  flex: 0 0 auto;
+  width: $step-tab-connector-width;
+  height: $step-tab-connector-height;
+  border-radius: 100px;
+  background: $step-tab-track-color;
+}
+
+.step-tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $step-tab-gap;
+  width: $step-tab-width;
+  height: $step-tab-height;
+  padding: $step-tab-padding-block $step-tab-padding-inline;
+  border-radius: $step-tab-radius;
+  border: 1px solid transparent;
+  background: $color-surface;
+  color: $color-text-strong;
+  font-family: $font-family-display;
+  font-size: $font-size-step-tab;
+  font-weight: $font-weight-medium;
+  line-height: $line-height-step-tab;
+  letter-spacing: $letter-spacing-step-tab;
+}
+
+.step-tab__icon {
+  flex: 0 0 auto;
+}
+
+.step-tab__label {
+  white-space: nowrap;
+}
+
+.step-tab--complete {
+  background: $step-tab-complete-background;
+  border: 1px solid $step-tab-complete-border;
+  box-shadow: $step-tab-complete-shadow;
+}
+
+.step-tab--current {
+  background: $step-tab-current-background;
+  border: $step-tab-border-width solid transparent;
+  box-shadow: $step-tab-current-shadow;
+}
+
+.step-tab--current::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(
+        90deg,
+        $step-tab-current-border 0,
+        $step-tab-current-border $step-tab-current-dash-length,
+        transparent $step-tab-current-dash-length,
+        transparent calc(#{$step-tab-current-dash-length} + #{$step-tab-current-dash-gap})
+      )
+      top left / calc(100% - 1.25rem) $step-tab-border-width no-repeat,
+    repeating-linear-gradient(
+        90deg,
+        $step-tab-current-border 0,
+        $step-tab-current-border $step-tab-current-dash-length,
+        transparent $step-tab-current-dash-length,
+        transparent calc(#{$step-tab-current-dash-length} + #{$step-tab-current-dash-gap})
+      )
+      bottom left / calc(100% - 1.25rem) $step-tab-border-width no-repeat,
+    repeating-linear-gradient(
+        0deg,
+        $step-tab-current-border 0,
+        $step-tab-current-border $step-tab-current-dash-length,
+        transparent $step-tab-current-dash-length,
+        transparent calc(#{$step-tab-current-dash-length} + #{$step-tab-current-dash-gap})
+      )
+      top left / $step-tab-border-width calc(100% - 1.25rem) no-repeat,
+    repeating-linear-gradient(
+        0deg,
+        $step-tab-current-border 0,
+        $step-tab-current-border $step-tab-current-dash-length,
+        transparent $step-tab-current-dash-length,
+        transparent calc(#{$step-tab-current-dash-length} + #{$step-tab-current-dash-gap})
+      )
+      top right / $step-tab-border-width calc(100% - 1.25rem) no-repeat;
+  background-position:
+    top center,
+    bottom center,
+    center left,
+    center right;
+}
+
+.step-tab--upcoming {
+  background: $step-tab-upcoming-background;
+  box-shadow: $step-tab-upcoming-shadow;
+  color: $color-text;
+}
+
+@include media-breakpoint-down(lg) {
+  .step-tabs {
+    width: 100%;
+    max-width: none;
+  }
+
+  .step-tabs__item {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .step-tabs__connector {
+    flex: 1 1 auto;
+    width: auto;
+  }
+
+  .step-tab {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@include media-breakpoint-down(md) {
+  .step-tabs {
+    width: 100%;
+  }
+
+  .step-tabs__item {
+    gap: 0.25rem;
+  }
+
+  .step-tabs__connector {
+    flex: 0 1 1rem;
+    min-width: 0.5rem;
+    background: $step-tab-track-color;
+  }
+
+  .step-tab {
+    justify-content: center;
+    height: $mobile-step-tab-height;
+    padding: 0.5rem;
+    border-radius: $radius-md;
+  }
+
+  .step-tab--complete {
+    background: $step-tab-current-background;
+    border-color: transparent;
+    box-shadow: $step-tab-current-shadow;
+  }
+
+  .step-tab--complete::after {
+    content: "";
+    position: absolute;
+    inset: -0.375rem;
+    border-radius: calc(#{$radius-md} + 0.25rem);
+    border: 0.125rem dashed $primary-400;
+    pointer-events: none;
+  }
+
+  .step-tab--current {
+    background: $step-tab-upcoming-background;
+    box-shadow: $step-tab-upcoming-shadow;
+  }
+
+  .step-tab--current::after {
+    content: none;
+  }
+
+  .step-tab__label {
+    display: none;
+  }
+}

@@ -3,10 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
-export type HeaderDropdownItem = {
-  id: string;
-  label: string;
-};
+import type { HeaderDropdownItem } from "@/types/header";
 
 type HeaderDropdownProps = {
   ariaLabel: string;
